@@ -11,7 +11,7 @@ export default function Home() {
     const { user } = useAuth();
 
     useEffect(() => {
-        if (!user?.email) {
+        if (!user?.uid) {
             router.replace('/login');
         }
     }, [user]);

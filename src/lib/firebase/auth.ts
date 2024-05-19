@@ -1,5 +1,7 @@
 import {
   GoogleAuthProvider,
+  FacebookAuthProvider,
+  TwitterAuthProvider,
   signInWithPopup,
   onAuthStateChanged as _onAuthStateChanged,
   Auth,
@@ -22,10 +24,28 @@ export async function signInWithGoogle() {
   }
 }
 
+export async function signInWithFacebook() {
+  const provider = new FacebookAuthProvider();
+  try {
+    await signInWithPopup(auth, provider);
+  } catch (error) {
+    console.error("Error signing in with Facebook", error);
+  }
+}
+
+export async function signInWithTwitter() {
+  const provider = new TwitterAuthProvider();
+  try {
+    await signInWithPopup(auth, provider);
+  } catch (error) {
+    console.error("Error signing in with Twitter", error);
+  }
+}
+
 export async function signOut() {
   try {
     return auth.signOut();
   } catch (error) {
-    console.error("Error signing out with Google", error);
+    console.error("Error signing out", error);
   }
 }

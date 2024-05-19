@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import { Cambo } from 'next/font/google';
-import { signInWithGoogle } from '@/lib/firebase/auth';
+import { signInWithFacebook, signInWithGoogle, signInWithTwitter } from '@/lib/firebase/auth';
 import { useAuth } from "@/hooks/useAuth";
 import { useEffect } from "react";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const cambo = Cambo({
     weight: '400',
@@ -18,7 +18,7 @@ export default function Home() {
     const { user } = useAuth();
 
     useEffect(() => {
-        if (user?.email) {
+        if (user?.uid) {
             router.replace('/home')
         }
     }, [user]);
@@ -26,6 +26,16 @@ export default function Home() {
     const loginWithGoogle = (e) => {
         e.stopPropagation();
         signInWithGoogle();
+    }
+
+    const loginWithFacebook = (e) => {
+        e.stopPropagation();
+        signInWithFacebook();
+    }
+
+    const loginWithTwitter = (e) => {
+        e.stopPropagation();
+        signInWithTwitter();
     }
 
     return (
@@ -68,14 +78,14 @@ export default function Home() {
                             <span>OR</span>
                             <hr className="w-48 h-[1px] mx-auto my-4 bg-black border-0 rounded dark:bg-white"></hr>
                         </div>
-                        <div className="w-full flex flex-row items-center justify-center space-x-8">
+                        <div className="w-full flex flex-row items-center justify-center space-x-8" onClick={loginWithFacebook}>
                             <button className="w-16 h-16 rounded-full border bg-[#4267B2] text-2xl">
                                 <Image style={{ filter: 'invert(100%)' }} className="mx-auto text-white" width={32} height={32} color="white" src={'/icons/facebook.svg'} alt={'f'} />
                             </button>
                             <button className="w-16 h-16 rounded-full border bg-white text-2xl" onClick={loginWithGoogle}>
                                 <Image className="mx-auto" width={32} height={32} color="white" src={'/icons/google.svg'} alt={'G'} />
                             </button>
-                            <button className="w-16 h-16 rounded-full border bg-[#1DA1F2] text-2xl">
+                            <button className="w-16 h-16 rounded-full border bg-[#1DA1F2] text-2xl" onClick={loginWithTwitter}>
                                 <Image style={{ filter: 'invert(100%)' }} className="mx-auto" width={32} height={32} color="white" src={'/icons/twitter.svg'} alt={'t'} />
                             </button>
                         </div>
