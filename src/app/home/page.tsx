@@ -23,9 +23,18 @@ export default function Home() {
 
     return (
         <section className="">
-            hi {user?.displayName}
-            <div>
-                <button onClick={logout}>Logout</button>
+            <div className="p-6 space-y-2 md:space-y-4 sm:p-8">
+                <div className="flex flex-col w-full pb-8 ">
+                    <span className={`text-center items-center text-2xl font-semibold text-gray-900 dark:text-white tracking-widest`}>
+                        hi {user?.displayName}
+                    </span>
+                    <span className="text-xs font-mono uppercase text-center">
+                        welcome to your virtual support group
+                    </span>
+                    <div className='text-center'>
+                        <button onClick={logout}>Logout</button>
+                    </div>
+                </div>
             </div>
         </section>
     );

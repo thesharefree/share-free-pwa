@@ -1,4 +1,5 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
+import colors from 'tailwindcss/colors';
 
 const config: Config = {
   content: [
@@ -7,11 +8,20 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    screens: {
+      // Custom screen sizes for mobile devices only
+      'xs': '320px',  // Example: extra small screens
+      'sm': '480px',  // Example: small screens
+      'md': '640px',  // Example: medium screens (max for mobile)
+    },
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      // You can extend the theme here if needed
+      colors: {
+        // Custom colors
+        redAccent: '#FF808A'
+      },
+      spacing: {
+        // Custom spacing
       },
     },
   },

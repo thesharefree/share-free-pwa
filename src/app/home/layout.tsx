@@ -1,15 +1,14 @@
-import { Inter } from "next/font/google";
+import Footer from "./footer";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export default function RootLayout({
+export default function HomeLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <div>
+      {children}
+      <Footer />
+    </div>
   );
 }
