@@ -1,20 +1,24 @@
 'use client';
 
+import { useRouter } from "next/navigation";
+import { useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { signOut } from '@/lib/firebase/auth';
-import { redirect, useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import useReduxHooks from "@/hooks/useReduxHooks";
+import type { RootState } from '@/redux/store';
 
 
 export default function Home() {
     const router = useRouter();
-    const { user } = useAuth();
+    const [{ loggedInUser }, dispatch] = useReduxHooks((state: RootState) => state.auth);
+
+    useAuth();
 
     useEffect(() => {
-        if (!user?.uid) {
+        if (!loggedInUser?._id) {
             router.replace('/login');
         }
-    }, [user]);
+    }, [loggedInUser, router]);
 
     const logout = (e) => {
         e.stopPropagation();
@@ -26,7 +30,7 @@ export default function Home() {
             <div className="p-6 space-y-2 md:space-y-4 sm:p-8">
                 <div className="flex flex-col w-full pb-8 ">
                     <span className={`text-center items-center text-2xl font-semibold text-gray-900 dark:text-white tracking-widest`}>
-                        hi {user?.displayName}
+                        hi {loggedInUser?.name}
                     </span>
                     <span className="text-xs font-mono uppercase text-center">
                         welcome to your virtual support group

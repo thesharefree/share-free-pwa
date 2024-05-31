@@ -1,13 +1,15 @@
 'use client';
 
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Cambo } from 'next/font/google';
 import { signInWithFacebook, signInWithGoogle, signInWithTwitter } from '@/lib/firebase/auth';
 import { useAuth } from "@/hooks/useAuth";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import Input from "@/components/input";
 import Button from "@/components/button";
+import useReduxHooks from "@/hooks/useReduxHooks";
+import type { RootState } from '@/redux/store';
 
 const cambo = Cambo({
     weight: '400',
@@ -17,14 +19,18 @@ const cambo = Cambo({
 
 export default function Home() {
     const router = useRouter();
-    const { user } = useAuth();
+    const [{ loggedInUser, isNewUser }, dispatch] = useReduxHooks((state: RootState) => state.auth);
     const [phoneNumber, setPhoneNumber] = useState('');
+    
+    useAuth();
 
     useEffect(() => {
-        if (user?.uid) {
-            router.replace('/home')
+        if (loggedInUser?._id) {
+            router.replace('/home');
+        } else if (isNewUser) {
+            router.push('/register');
         }
-    }, [user]);
+    }, [loggedInUser, isNewUser, router]);
 
     const sendOtp = (e) => {
         e.stopPropagation();
@@ -60,7 +66,7 @@ export default function Home() {
             <div className="w-full flex flex-row items-center justify-center space-x-8 pt-4">
                 <span className="">Sign in / Sign up</span>
             </div>
-            <div className="mx-auto pt-4">
+            <div className="mx-auto pt-16">
                 <Input {...{
                     left: {
                         icon: 'PhoneIcon',
