@@ -53,7 +53,7 @@ export default function Home() {
     }
 
     return (
-        <div className="p-4 space-y-4 md:px-8">
+        <div className="space-y-4 md:px-8 content items-center ">
             <div className="flex flex-col w-full py-8">
                 <Image className="mx-auto mb-2" width={80} height={80} src={'/icons/icon-512x512.png'} alt="as" />
                 <span className={`${cambo.className} text-center items-center text-2xl font-semibold text-gray-900 dark:text-white tracking-widest`}>
@@ -63,10 +63,10 @@ export default function Home() {
                     your virtual support group
                 </span>
             </div>
-            <div className="w-full flex flex-row items-center justify-center space-x-8 pt-4">
-                <span className="">Sign in / Sign up</span>
+            <div>
+                <span>Sign in / Sign up</span>
             </div>
-            <div className="mx-auto pt-16">
+            <div className=" w-full mx-auto pt-8">
                 <Input {...{
                     left: {
                         icon: 'PhoneIcon',
@@ -79,7 +79,7 @@ export default function Home() {
                     pattern: '[0-9]{3}-[0-9]{3}-[0-9]{4}',
                 }}></Input>
             </div>
-            <div className="flex flex-col gap-2 pt-4">
+            <div className="flex flex-col  w-full gap-2 pt-4">
                 <Button onClick={sendOtp}>Send OTP</Button>
                 <p className="text-xs text-center">We will send an OTP to your phone number</p>
             </div>

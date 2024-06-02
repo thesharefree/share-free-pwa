@@ -39,8 +39,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Provider store={store}>
-          <div className="flex flex-col items-center justify-center sm:max-w-md px-6 py-8 mx-auto h-screen">
-            <div className="w-full md:rounded-lg md:shadow md:shadow-gray-300">
+          <div className="flex flex-col sm:max-w-md px-6 py-8 mx-auto h-screen">
+            <div className="md:rounded-lg md:shadow md:shadow-gray-300 content">
               {children}
             </div>
           </div>
@@ -49,3 +49,4 @@ export default function RootLayout({
     </html>
   );
 }
+//  items-center justify-center 
