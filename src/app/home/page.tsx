@@ -23,6 +23,7 @@ export default function Home() {
     const logout = (e) => {
         e.stopPropagation();
         signOut();
+        dispatch({ type: 'LOGOUT' });
     }
 
     return (

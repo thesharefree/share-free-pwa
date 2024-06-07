@@ -9,7 +9,3 @@ export const fetchLoggedInUser = () => async (dispatch) => {
         console.error('Error fetching user:', error);
     }
 };
-
-export const logout = () => async (dispatch) => {
-    dispatch({ type: 'LOGOUT' });
-}

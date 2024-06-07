@@ -3,13 +3,15 @@
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Cambo } from 'next/font/google';
-import { signInWithFacebook, signInWithGoogle, signInWithTwitter } from '@/lib/firebase/auth';
+import { signInWithFacebook, signInWithGoogle, signInWithTwitter, sendOTP } from '@/lib/firebase/auth';
 import { useAuth } from "@/hooks/useAuth";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Input from "@/components/input";
 import Button from "@/components/button";
 import useReduxHooks from "@/hooks/useReduxHooks";
 import type { RootState } from '@/redux/store';
+import { RecaptchaVerifier } from "firebase/auth";
+import { auth } from "@/lib/firebase/firebase";
 
 const cambo = Cambo({
     weight: '400',
@@ -21,7 +23,7 @@ export default function Home() {
     const router = useRouter();
     const [{ loggedInUser, isNewUser }, dispatch] = useReduxHooks((state: RootState) => state.auth);
     const [phoneNumber, setPhoneNumber] = useState('');
-    
+
     useAuth();
 
     useEffect(() => {
@@ -32,9 +34,20 @@ export default function Home() {
         }
     }, [loggedInUser, isNewUser, router]);
 
-    const sendOtp = (e) => {
+    const isPhoneNumberValid = useMemo(() => {
+        return /^\d{10}$/.test(phoneNumber)
+    }, [phoneNumber]);
+
+    const sendOtp = async (e) => {
         e.stopPropagation();
-        // send otp
+        let recaptchaVerifier = new RecaptchaVerifier(auth, 'send_otp', {
+            'size': 'invisible',
+        });
+        const response = await sendOTP(`+91${phoneNumber}`, recaptchaVerifier);
+        if (response?.verificationId) {
+            dispatch({ type: 'SET_OTP_VERIFICATION_ID', payload: { phoneNumber, verificationId: response.verificationId } });
+            router.push('/login/otp');
+        }
     }
 
     const loginWithGoogle = (e) => {
@@ -80,7 +93,7 @@ export default function Home() {
                 }}></Input>
             </div>
             <div className="flex flex-col  w-full gap-2 pt-4">
-                <Button onClick={sendOtp}>Send OTP</Button>
+                <Button id="send_otp" onClick={sendOtp} disabled={!isPhoneNumberValid}>Send OTP</Button>
                 <p className="text-xs text-center">We will send an OTP to your phone number</p>
             </div>
             <div className="flex flex-row w-full items-center justify-center space-x-4 pt-8">

@@ -18,7 +18,8 @@ const config: Config = {
       // You can extend the theme here if needed
       colors: {
         // Custom colors
-        redAccent: '#FF808A'
+        redAccent: '#FF808A',
+        redAccentDisabled: '#AA808A',
       },
       spacing: {
         // Custom spacing

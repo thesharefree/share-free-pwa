@@ -1,6 +1,8 @@
 const initialState = {
     loggedInUser: undefined,
     isNewUser: false,
+    phoneNumber: undefined,
+    verificationId: undefined,
 };
 
 const authReducer = (state = initialState, action: any) => {
@@ -17,6 +19,12 @@ const authReducer = (state = initialState, action: any) => {
                 loggedInUser: undefined,
                 isNewUser: true,
             };
+        case 'SET_OTP_VERIFICATION_ID':
+            return {
+                ...state,
+                phoneNumber: action.payload.phoneNumber,
+                verificationId: action.payload.verificationId,
+            }
         case 'LOGOUT':
             return initialState;
         default:

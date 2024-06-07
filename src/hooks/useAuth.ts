@@ -1,7 +1,7 @@
 import { auth } from "@/lib/firebase/firebase";
 import { onAuthStateChanged } from '@/lib/firebase/auth';
 import { useState, useEffect } from "react";
-import { fetchLoggedInUser, logout } from '@/redux/actions/authActions';
+import { fetchLoggedInUser } from '@/redux/actions/authActions';
 import type { RootState } from '@/redux/store';
 import useReduxHooks from './useReduxHooks';
 
@@ -22,9 +22,6 @@ export const useAuth = () => {
         if (firebaseUser && firebaseUser.uid !== loggedInUser?.firebaseUserId) {
             console.log('fetching SF user');
             dispatch(fetchLoggedInUser());
-        } else if (!firebaseUser) {
-            console.log('logging out');
-            dispatch(logout());
         }
     }, [dispatch, firebaseUser, loggedInUser]);
 
