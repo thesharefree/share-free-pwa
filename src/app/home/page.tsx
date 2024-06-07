@@ -26,7 +26,7 @@ export default function Home() {
     }
 
     return (
-        <section className="">
+        <section className="content justify-center">
             <div className="p-6 space-y-2 md:space-y-4 sm:p-8">
                 <div className="flex flex-col w-full pb-8 ">
                     <span className={`text-center items-center text-2xl font-semibold text-gray-900 dark:text-white tracking-widest`}>

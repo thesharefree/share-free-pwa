@@ -53,7 +53,7 @@ export default function Home() {
     }
 
     return (
-        <div className="space-y-4 md:px-8 content items-center ">
+        <div className="space-y-4 md:px-8 content items-center justify-center">
             <div className="flex flex-col w-full py-8">
                 <Image className="mx-auto mb-2" width={80} height={80} src={'/icons/icon-512x512.png'} alt="as" />
                 <span className={`${cambo.className} text-center items-center text-2xl font-semibold text-gray-900 dark:text-white tracking-widest`}>

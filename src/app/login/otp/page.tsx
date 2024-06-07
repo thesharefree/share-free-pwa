@@ -1,20 +1,10 @@
 'use client';
 
-import Image from "next/image";
-import { Cambo } from 'next/font/google';
 import OtpInput from 'react-otp-input';
 import { signInWithFacebook, signInWithGoogle, signInWithTwitter } from '@/lib/firebase/auth';
 import { useAuth } from "@/hooks/useAuth";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import Input from "@/components/input";
+import { useState } from "react";
 import Button from "@/components/button";
-
-const cambo = Cambo({
-    weight: '400',
-    subsets: ['latin'],
-    display: 'swap',
-});
 
 export default function Home() {
     useAuth();
@@ -26,7 +16,7 @@ export default function Home() {
     }
 
     return (
-        <div className="md:px-8 content">
+        <div className="md:px-8 content justify-center">
             <div className="flex flex-col">
                 <span className="text-sm">OTP sent to</span>
                 <span className="text-2xl">+91-9970197591</span>

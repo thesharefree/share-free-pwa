@@ -11,6 +11,7 @@ export const useAuth = () => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged((authUser) => {
+            console.log('firebase user changed');
             setFirebaseUser(authUser);
             authUser?.getIdToken().then(token => localStorage.setItem('ACCESS_TOKEN', token || ''));
         })
@@ -19,8 +20,10 @@ export const useAuth = () => {
 
     useEffect(() => {
         if (firebaseUser && firebaseUser.uid !== loggedInUser?.firebaseUserId) {
+            console.log('fetching SF user');
             dispatch(fetchLoggedInUser());
         } else if (!firebaseUser) {
+            console.log('logging out');
             dispatch(logout());
         }
     }, [dispatch, firebaseUser, loggedInUser]);
