@@ -93,7 +93,7 @@ export default function Home() {
                 }}></Input>
             </div>
             <div className="flex flex-col  w-full gap-2 pt-4">
-                <Button id="send_otp" onClick={sendOtp} disabled={!isPhoneNumberValid}>Send OTP</Button>
+                <Button className="btn-primary" id="send_otp" onClick={sendOtp} disabled={!isPhoneNumberValid}>Send OTP</Button>
                 <p className="text-xs text-center">We will send an OTP to your phone number</p>
             </div>
             <div className="flex flex-row w-full items-center justify-center space-x-4 pt-8">

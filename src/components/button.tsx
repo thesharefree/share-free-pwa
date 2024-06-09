@@ -1,10 +1,11 @@
 const Button = (props: any) => {
-    const { className, onClick, children, ...rest } = props;
+    const { className, onClick, children, disabled, ...rest } = props;
 
     return (
         <button
-            className={className ?? "flex items-center justify-center w-full h-12 rounded-lg bg-redAccent disabled:bg-redAccentDisabled"}
+            className={`${className} ${disabled && 'disabled'}`}
             onClick={onClick}
+            disabled={disabled}
             {...rest}>
             {children}
         </button>

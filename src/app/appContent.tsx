@@ -16,11 +16,6 @@ export default function AppContent({ children }: { children: React.ReactNode }) 
     <Provider store={store}>
       <div className="flex flex-col md:max-w-md mx-auto h-screen">
         <div className="md:rounded-lg md:shadow md:shadow-gray-300 content">
-          {canGoBack &&
-            <Button onClick={router.back} className="absolute t-5 l-5 z-50 bg-white dark:bg-black w-10 h-10">
-              <ChevronLeftIcon className="w-10 h-10 text-black dark:text-white" />
-            </Button>
-          }
           {children}
         </div>
       </div>
