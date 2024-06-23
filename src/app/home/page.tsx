@@ -6,6 +6,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { signOut } from '@/lib/firebase/auth';
 import useReduxHooks from "@/hooks/useReduxHooks";
 import type { RootState } from '@/redux/store';
+import { fetchUserTopics } from "@/redux/actions/userActions";
 
 
 export default function Home() {
@@ -17,6 +18,9 @@ export default function Home() {
     useEffect(() => {
         if (!loggedInUser?._id) {
             router.replace('/login');
+        } else {
+            dispatch(fetchUserTopics());
+            router.replace('/home/dashboard');
         }
     }, [loggedInUser, router]);
 
@@ -30,7 +34,7 @@ export default function Home() {
         <section className="content justify-center">
             <div className="p-6 space-y-2 md:space-y-4 sm:p-8">
                 <div className="flex flex-col w-full pb-8 ">
-                    <span className={`text-center items-center text-2xl font-semibold text-gray-900 dark:text-white tracking-widest`}>
+                    <span className={`text-center items-center text-2xl font-semibold text-black dark:text-white tracking-widest`}>
                         hi {loggedInUser?.name}
                     </span>
                     <span className="text-xs font-mono uppercase text-center">

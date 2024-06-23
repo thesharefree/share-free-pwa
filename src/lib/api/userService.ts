@@ -19,3 +19,13 @@ export const getUser = async (id: string) => {
         throw error;
     }
 };
+
+export const getMyTopics = async () => {
+    try {
+        const response = await apiClient.get(`/user/topics`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching user', error);
+        throw error;
+    }
+};

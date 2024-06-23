@@ -6,7 +6,7 @@ import { Cambo } from 'next/font/google';
 import { signInWithFacebook, signInWithGoogle, signInWithTwitter, sendOTP } from '@/lib/firebase/auth';
 import { useAuth } from "@/hooks/useAuth";
 import { useEffect, useMemo, useState } from "react";
-import Input from "@/components/input";
+import PhoneNumber from "@/components/phone_number";
 import Button from "@/components/button";
 import useReduxHooks from "@/hooks/useReduxHooks";
 import type { RootState } from '@/redux/store';
@@ -69,7 +69,7 @@ export default function Home() {
         <div className="space-y-4 md:px-8 content items-center justify-center">
             <div className="flex flex-col w-full py-8">
                 <Image className="mx-auto mb-2" width={80} height={80} src={'/icons/icon-512x512.png'} alt="as" />
-                <span className={`${cambo.className} text-center items-center text-2xl font-semibold text-gray-900 dark:text-white tracking-widest`}>
+                <span className={`${cambo.className} text-center items-center text-2xl font-semibold text-black dark:text-white tracking-widest`}>
                     share free
                 </span>
                 <span className="text-xs font-mono uppercase text-center">
@@ -79,8 +79,8 @@ export default function Home() {
             <div>
                 <span>Sign in / Sign up</span>
             </div>
-            <div className=" w-full mx-auto pt-8">
-                <Input {...{
+            <div className="w-full mx-auto pt-8">
+                <PhoneNumber {...{
                     left: {
                         icon: 'PhoneIcon',
                         text: '+91-'
@@ -90,7 +90,7 @@ export default function Home() {
                     placeholder: 'Phone Number',
                     type: 'tel',
                     pattern: '[0-9]{3}-[0-9]{3}-[0-9]{4}',
-                }}></Input>
+                }}></PhoneNumber>
             </div>
             <div className="flex flex-col  w-full gap-2 pt-4">
                 <Button className="btn-primary" id="send_otp" onClick={sendOtp} disabled={!isPhoneNumberValid}>Send OTP</Button>

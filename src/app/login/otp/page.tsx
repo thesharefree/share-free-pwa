@@ -10,7 +10,6 @@ import type { RootState } from '@/redux/store';
 import { useRouter } from 'next/navigation';
 import { auth } from '@/lib/firebase/firebase';
 import { RecaptchaVerifier } from 'firebase/auth';
-import Back from '@/components/baxk';
 
 export default function Home() {
     const router = useRouter();
@@ -90,7 +89,7 @@ export default function Home() {
                 />
             </div>
             <div className="flex flex-col gap-2 pt-4">
-                <Button id="resend_otp" className="btn-anchor" disabled={resendWithin > 0} onClick={resendOtp}>{`Resend within ${resendWithin}`}</Button>
+                <Button id="resend_otp" className="btn-anchor" disabled={resendWithin > 0} onClick={resendOtp}>{`Resend${resendWithin > 0 ? ` in ${resendWithin} sec` : ''}`}</Button>
             </div>
             <div className="flex flex-col gap-2 pt-16">
                 <Button className="btn-primary" onClick={loginWithOtp} disabled={!isOTPValid}>Login with OTP</Button>
