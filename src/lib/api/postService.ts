@@ -21,6 +21,16 @@ export const createPost = async (postData: Post) => {
     }
 };
 
+export const getTopPosts = async () => {
+    try {
+        const response = await apiClient.get(`/posts/all`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching posts', error);
+        throw error;
+    }
+};
+
 export const likePost = async (postId: string) => {
     try {
         const response = await apiClient.post(`/posts/like/${postId}`);

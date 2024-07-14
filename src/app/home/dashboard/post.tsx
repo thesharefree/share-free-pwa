@@ -11,8 +11,8 @@ import Badge from "@/components/badge";
 import Button from "@/components/button";
 import { likePost, supportPost } from "@/lib/api/postService";
 import useReduxHooks from "@/hooks/useReduxHooks";
-import { fetchUserPosts } from "@/redux/actions/userActions";
 import { RootState } from "@/redux/store";
+import { fetchTopPosts } from "@/redux/actions/postActions";
 
 
 export default function Post({ post }: { post: any }) {
@@ -29,12 +29,12 @@ export default function Post({ post }: { post: any }) {
 
     const onLikePost = async (postId: string) => {
         await likePost(postId);
-        dispatch(fetchUserPosts());
+        dispatch(fetchTopPosts());
     }
 
     const onSupportPost = async (postId: string) => {
         await supportPost(postId);
-        dispatch(fetchUserPosts());
+        dispatch(fetchTopPosts());
     }
 
     return (

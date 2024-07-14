@@ -3,10 +3,12 @@ import { persistReducer } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import authReducer from './authReducer';
 import userReducer from './userReducer';
+import postReducer from './postReducer';
 
 const rootReducer = combineReducers({
     auth: authReducer,
     user: userReducer,
+    post: postReducer,
 });
 
 const persistConfig = {

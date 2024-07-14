@@ -6,13 +6,13 @@ import Post from "./post";
 
 
 export default function PostList() {
-    const [{ user }] = useReduxHooks((state: RootState) => state);
-    const { posts } = user;
+    const [{ post }] = useReduxHooks((state: RootState) => state);
+    const { posts } = post;
 
     return (
         <div className="w-full mx-auto">
             <div className="flex flex-col gap-4">
-                {posts?.map((post: any) => <Post key={post._id} post={post} />)}
+                {posts?.map((p: any) => <Post key={post._id} post={p} />)}
             </div>
         </div>
     );

@@ -8,6 +8,7 @@ const nextConfig = {
   },
   images: {
     domains: [
+      "lh3.googleusercontent.com",
       "sharefreealphaasa.blob.core.windows.net",
       "sharefreeasa.blob.core.windows.net",
     ],
