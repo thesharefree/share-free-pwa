@@ -6,7 +6,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { signOut } from '@/lib/firebase/auth';
 import useReduxHooks from "@/hooks/useReduxHooks";
 import type { RootState } from '@/redux/store';
-import { fetchUserTopics } from "@/redux/actions/userActions";
+import { fetchUserPosts, fetchUserTopics } from "@/redux/actions/userActions";
 
 
 export default function Home() {
@@ -20,6 +20,7 @@ export default function Home() {
             router.replace('/login');
         } else {
             dispatch(fetchUserTopics());
+            dispatch(fetchUserPosts());
             router.replace('/home/dashboard');
         }
     }, [loggedInUser, router]);

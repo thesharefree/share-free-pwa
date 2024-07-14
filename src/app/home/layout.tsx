@@ -7,7 +7,9 @@ export default function HomeLayout({
 }) {
   return (
     <div>
-      {children}
+      <div className="pb-14">
+        {children}
+      </div>
       <Footer />
     </div>
   );

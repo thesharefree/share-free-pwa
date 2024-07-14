@@ -8,7 +8,7 @@ export default function Search() {
     const [search, setSearch] = useState('');
 
     return (
-        <div className="w-full mx-auto pt-8">
+        <div className="w-full mx-auto">
             <SearchInput {...{
                 left: {
                     icon: 'SearchIcon',

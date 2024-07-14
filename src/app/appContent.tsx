@@ -15,7 +15,7 @@ export default function AppContent({ children }: { children: React.ReactNode }) 
   return (
     <Provider store={store}>
       <div className="flex flex-col md:max-w-md mx-auto h-screen">
-        <div className="md:rounded-lg md:shadow md:shadow-gray-300 content">
+        <div className="md:rounded-lg md:shadow md:shadow-gray-300 content overflow-y-auto">
           {children}
         </div>
       </div>

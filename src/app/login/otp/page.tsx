@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation';
 import { auth } from '@/lib/firebase/firebase';
 import { RecaptchaVerifier } from 'firebase/auth';
 
-export default function Home() {
+export default function Otp() {
     const router = useRouter();
     const [{ loggedInUser, isNewUser, phoneNumber, verificationId }, dispatch] = useReduxHooks((state: RootState) => state.auth);
     const [otp, setOtp] = useState('');

@@ -6,6 +6,12 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV !== "development",
   },
+  images: {
+    domains: [
+      "sharefreealphaasa.blob.core.windows.net",
+      "sharefreeasa.blob.core.windows.net",
+    ],
+  },
   async headers() {
     return [
       {

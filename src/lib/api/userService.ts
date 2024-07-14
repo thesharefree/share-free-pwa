@@ -25,7 +25,17 @@ export const getMyTopics = async () => {
         const response = await apiClient.get(`/user/topics`);
         return response.data;
     } catch (error) {
-        console.error('Error fetching user', error);
+        console.error('Error fetching topics', error);
+        throw error;
+    }
+};
+
+export const getMyPosts = async () => {
+    try {
+        const response = await apiClient.get(`/user/posts`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching posts', error);
         throw error;
     }
 };

@@ -8,6 +8,7 @@ import useReduxHooks from "@/hooks/useReduxHooks";
 import type { RootState } from '@/redux/store';
 import Header from "./header";
 import Search from "./search";
+import PostList from "./post_list";
 
 
 export default function Dashboard() {
@@ -23,9 +24,10 @@ export default function Dashboard() {
     }, [loggedInUser, router]);
 
     return (
-        <section className="flex flex-col gap-2">
+        <section className="flex flex-col gap-4">
             <Header />
             <Search />
+            <PostList />
         </section>
     );
 }

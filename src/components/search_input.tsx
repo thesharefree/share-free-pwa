@@ -1,4 +1,4 @@
-import DynamicHeroIcon from '@/components/icon';
+import DynamicHeroIcon from '@/components/icon_outline';
 
 const SearchInput = (props: any) => {
     const { left, right, value, onChange, placeholder, ...attr } = props;

@@ -1,5 +1,6 @@
 const initialState = {
     topics: undefined,
+    posts: undefined,
 };
 
 const userReducer = (state = initialState, action: any) => {
@@ -8,6 +9,11 @@ const userReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 topics: action.payload,
+            }
+        case 'SET_USER_POSTS':
+            return {
+                ...state,
+                posts: action.payload,
             }
         default:
             return state;

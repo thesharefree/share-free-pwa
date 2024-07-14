@@ -1,7 +1,6 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { useAuth } from '@/hooks/useAuth';
 import useReduxHooks from "@/hooks/useReduxHooks";
 import type { RootState } from '@/redux/store';
 import { ChatAltIcon } from "@heroicons/react/outline";
@@ -34,7 +33,7 @@ export default function Header() {
             </div>
             <div className="mt-2 flex gap-1 overflow-x-auto">
                 {topics?.map((topic: any) => (
-                    <Badge key={topic._id} className={''} type={'primary'}>
+                    <Badge key={topic._id} className={''} type={'active'}>
                         {topic.name}
                     </Badge>
                 ))}
