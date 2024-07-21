@@ -12,10 +12,10 @@ const Footer = () => {
                         <span className="text-xs">Home</span>
                     </div>
                 </Link>
-                <Link href="/home/search">
+                <Link href="/home/groups">
                     <div className="flex flex-col items-center text-gray-700">
                         <SearchIcon className="w-6 h-6" />
-                        <span className="text-xs">Search</span>
+                        <span className="text-xs">Groups</span>
                     </div>
                 </Link>
                 <Link href="/home/notifications">

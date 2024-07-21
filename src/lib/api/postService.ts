@@ -1,4 +1,3 @@
-import Post from '../types/Post';
 import apiClient from './apiClient';
 
 export const getPost = async (id: string) => {
@@ -11,7 +10,7 @@ export const getPost = async (id: string) => {
     }
 };
 
-export const createPost = async (postData: Post) => {
+export const createPost = async (postData: any) => {
     try {
         const response = await apiClient.post('/posts', postData);
         return response.data;
