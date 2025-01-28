@@ -21,6 +21,12 @@ export default function Search() {
         dispatch(searchGroupsByKeywords([search]));
     }
 
+    const onKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            onSearch()
+        }
+    }
+
     const onClick = () => {
         if (isDashboard) {
             router.push('/home/groups');
@@ -41,7 +47,8 @@ export default function Search() {
                 onChange: setSearch,
                 placeholder: 'Search Groups',
                 autoFocus: !isDashboard,
-                onclick: isDashboard ? onClick : undefined,
+                onClick: isDashboard ? onClick : undefined,
+                onKeyDown: onKeyDown,
             }} />
         </div>
     );

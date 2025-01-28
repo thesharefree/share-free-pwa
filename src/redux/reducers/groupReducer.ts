@@ -1,6 +1,7 @@
 const initialState = {
     searchFilter: undefined,
-    groups: undefined,
+    searchedGroups: undefined,
+    selectedGroup: undefined,
 };
 
 const groupReducer = (state = initialState, action: any) => {
@@ -13,7 +14,12 @@ const groupReducer = (state = initialState, action: any) => {
         case 'SET_SEARCHED_GROUPS':
             return {
                 ...state,
-                groups: action.payload,
+                searchedGroups: action.payload,
+            }
+        case 'SET_SELECTED_GROUP':
+            return {
+                ...state,
+                selectedGroup: action.payload,
             }
         default:
             return state;

@@ -1,5 +1,5 @@
 import { AppDispatch } from "../store";
-import { searchGroups } from "@/lib/api/groupService";
+import { getGroup, searchGroups } from "@/lib/api/groupService";
 
 export const searchGroupsByKeywords = (keywords: string[]) => async (dispatch: AppDispatch) => {
     try {
@@ -8,6 +8,15 @@ export const searchGroupsByKeywords = (keywords: string[]) => async (dispatch: A
         };
         const data = await searchGroups(params);
         dispatch({ type: 'SET_SEARCHED_GROUPS', payload: data });
+    } catch (error) {
+        console.error('Error searching groups:', error);
+    }
+}
+
+export const fetchGroup = (id: string) => async (dispatch: AppDispatch) => {
+    try {
+        const data = await getGroup(id);
+        dispatch({ type: 'SET_SELECTED_GROUP', payload: data });
     } catch (error) {
         console.error('Error searching groups:', error);
     }

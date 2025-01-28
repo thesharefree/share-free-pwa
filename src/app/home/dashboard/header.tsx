@@ -31,7 +31,7 @@ export default function Header() {
                     </Button>
                 </span>
             </div>
-            <div className="mt-2 flex gap-1 overflow-x-auto">
+            <div className="mt-2 flex gap-1 overflow-x-auto no-scrollbar">
                 {topics?.map((topic: any) => (
                     <Badge key={topic._id} className={''} type={'active'}>
                         {topic.name}

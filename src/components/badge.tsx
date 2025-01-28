@@ -13,7 +13,7 @@ const Badge = (props: any) => {
     const { children, type, className, ...rest } = props;
     return (
         <label
-            className={`flex justify-center w-[min-content_1fr] rounded-full py-1 px-2 py-0 text-xs caption capitalize whitespace-nowrap ${BADGE_TYPES[type]} ${className || ''}`}
+            className={`flex justify-center w-[min-content_1fr] rounded-full px-2 py-1 text-xs caption capitalize whitespace-nowrap ${BADGE_TYPES[type]} ${className || ''}`}
             style={{ width: 'min-content' }}
             {...rest}>
             {children}

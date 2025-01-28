@@ -2,7 +2,7 @@ import DynamicHeroIcon from '@/components/icon_outline';
 import Button from './button';
 
 const SearchInput = (props: any) => {
-    const { left, right, value, onclick, onChange, placeholder, autoFocus, ...attr } = props;
+    const { left, right, value, onClick, onKeyDown, onChange, placeholder, autoFocus, ...attr } = props;
 
     return (
         <div className="relative">
@@ -17,7 +17,8 @@ const SearchInput = (props: any) => {
                     e.stopPropagation();
                     onChange(e.target.value);
                 }}
-                onClick={onclick}
+                onClick={onClick}
+                onKeyDown={onKeyDown}
                 id="phone-number"
                 placeholder={placeholder}
                 autoFocus={autoFocus}
